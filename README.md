@@ -39,3 +39,9 @@ $ helm repo update
 $ helm repo search mynewchart
 ```
 
+## Charts
+
+### AWX 
+Helm chart for AWX, upstream of Ansible Tower. 
+- https://github.com/ansible/awx
+- https://github.com/Najeongho/charts/tree/master/incubator/awx
