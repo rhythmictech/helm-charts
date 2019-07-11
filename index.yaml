@@ -2,8 +2,31 @@ apiVersion: v1
 entries:
   awx:
   - apiVersion: v1
+    appVersion: 6.0.0
+    created: "2019-07-11T15:34:24.385429-04:00"
+    description: AWX provides a web-based user interface, REST API, and task engine
+      built on top of Ansible.
+    digest: fd6f8856bf6dad143ba7e8a040d38910d00599bc77d1ba0b7450968a09557835
+    engine: gotpl
+    home: https://github.com/ansible/awx
+    icon: https://www.ansible.com/hubfs/2017_Images/BrandPage/Brand-Assets/Tower/Ansible_RH_AnsibleTower_RGB_RedWhite.svg?t=1528996684045
+    keywords:
+    - Ansible AWX
+    - Automation configuration deployment
+    - Devops
+    - Web-based GUI
+    maintainers:
+    - email: steven.black@rhythmictech.com
+      name: Steven Black
+    name: awx
+    sources:
+    - https://github.com/rhythmictech/helm-charts/tree/master/charts/awx
+    urls:
+    - awx-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v1
     appVersion: 0.0.1
-    created: "2019-07-11T13:51:37.955481-04:00"
+    created: "2019-07-11T15:34:24.384727-04:00"
     description: AWX provides a web-based user interface, REST API, and task engine
       built on top of Ansible.
     digest: bc5800a71c19f3f1b531da9dc3bb7ab9d9d41ae657ef1dd3c493fa8c8a3fbb1a
@@ -24,4 +47,4 @@ entries:
     urls:
     - awx-0.0.1.tgz
     version: 0.0.1
-generated: "2019-07-11T13:51:37.95285-04:00"
+generated: "2019-07-11T15:34:24.380841-04:00"

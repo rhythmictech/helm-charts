@@ -1,5 +1,6 @@
 {{- if .Values.ingress.enabled -}}
-{{- $fullName := include "awx.fullname" . -}}
+{{- $servicePrefix := include "awx.fullname" . -}}
+{{- $fullName := printf "%s%s" $servicePrefix "-web" -}}
 {{- $servicePort := .Values.webService.internalPort -}}
 {{- $ingressPath := .Values.ingress.path -}}
 apiVersion: extensions/v1beta1

@@ -26,24 +26,16 @@ persistence:
   ##   GKE, AWS & OpenStack)
   ##
   storageClass: ""
-  ## DB PV access mode. If you select file storage(NAS), you must set "ReadWriteMany". If you select block storage(ISCSI), you must set "ReadWriteOnce". It is based on IBM Cloud.
   accessMode: ReadWriteOnce
-  ## DB PV size. You can set at least 20GB. It is based on IBM Cloud.
   size: 20Gi
-  ## DB claim name
   claimName: "awx-db"
-  ## DB PV Storage-Class selection. Storage class is defined as follows: "ibmc-(block or file)-(bronze or silver or gold)".
-  annotations: {volume.beta.kubernetes.io/storage-class: "ibmc-block-bronze"}
-  ## DB PV mount path and sub-path (with DB file).
+  annotations: ""
   mountPath: "/var/lib/postgresql/data"
   subPath: "/pgdata"
   ## DB persistence volume name
   name: "data"
 dbResources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # If you do want to specify resources, uncomment the following lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   # limits:
   #  cpu: 100m
   #  memory: 128Mi
@@ -77,10 +69,7 @@ queueService:
   # nodePort: 30000
   port: 5672
 queueResources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # If you do want to specify resources, uncomment the following lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   # limits:
   #  cpu: 100m
   #  memory: 128Mi
@@ -108,10 +97,7 @@ cacheService:
   # nodePort: 30000
   port: 11211
 cacheResources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  #  If you do want to specify resources, uncomment the following lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   # limits:
   #  cpu: 100m
   #  memory: 128Mi
@@ -135,10 +121,7 @@ taskImage:
   pullPolicy: IfNotPresent
 secretKey: "aabbcc"
 taskResources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  #  If you do want to specify resources, uncomment the following lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   # limits:
   #  cpu: 100m
   #  memory: 128Mi
@@ -162,7 +145,7 @@ webImage:
   pullPolicy: IfNotPresent
 webService:
   name: "http"
-  ## Set it to "NodePort". To change to "LoadBalancer" and "Ingress", you can set it after "Portable IP" is preassigned. It is based on IBM Cloud.
+  ## Set it to "NodePort". To change to "LoadBalancer" and "Ingress", you can set it after "Portable IP" is preassigned.
   type: "NodePort"
   ## Optional static port assignment for service type NodePort.
   # nodePort: 30000
@@ -171,22 +154,20 @@ webService:
   ## Set external port
   externalPort: 8052
 ingress:
-  enabled: false
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
+  enabled: true
+  annotations: {
+    kubernetes.io/ingress.class: nginx
+  }
     # kubernetes.io/tls-acme: "true"
   path: /
-  hosts: []
+  hosts: ["adb7dd036a40911e999c40a64e70ce08-169568679.us-east-1.elb.amazonaws.com"]
   #  - chart.example.com
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
 webResources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  #  If you do want to specify resources, uncomment the following lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   # limits:
   #  cpu: 100m
   #  memory: 128Mi
