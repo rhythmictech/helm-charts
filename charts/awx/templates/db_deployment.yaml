@@ -1,3 +1,4 @@
+{{- if and (not .Values.dbHost) }}
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
@@ -63,3 +64,4 @@ spec:
       tolerations:
 {{ toYaml . | indent 8 }}
       {{- end }}
+{{- end }}

@@ -1,6 +1,8 @@
 # =============================================
 #  DATABASE (db)
 # =============================================
+# To deploy postgres on k8s comment out dbHost
+# dbHost: localhost
 dbName: db
 dbComponent: "database"
 dbReplicaCount: 1

@@ -1,3 +1,4 @@
+{{- if and (not .Values.dbHost) }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -20,3 +21,4 @@ spec:
     app: {{ template "awx.name" . }}
     release: {{ .Release.Name }}
     component: {{ .Values.dbComponent }}
+{{- end }}
